@@ -4,8 +4,9 @@ class ServerPort
   end
 
    def call(env)
+    request = Rack::Request.new(env)
     status, headers, response = @app.call(env)
-    body = response.first + env['SERVER_PORT']
+    body = response.first + request.port.to_s
     status = 200
     [status, headers, [body]]
   end
