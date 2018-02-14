@@ -1,4 +1,5 @@
 require_relative '../spec_helper'
+require 'pry'
 
 describe 'Application' do
   def app
@@ -30,6 +31,7 @@ describe 'Application' do
   end
 
   it 'returns an "Are you lost?" message at /about' do
+    #binding.pry()
     get '/about'
     expect(last_response.body).to eq("<h1><a href='/'>Are you lost?</a></h1>")
   end
